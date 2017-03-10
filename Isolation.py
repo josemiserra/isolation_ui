@@ -352,7 +352,6 @@ class Board(object):
 
     def machine_moves(self, time_limit=TIME_LIMIT_MILLIS):
 
-        move_history = []
         curr_time_millis = lambda: 1000 * timeit.default_timer()
         legal_player_moves = self.get_legal_moves()
 
@@ -363,22 +362,16 @@ class Board(object):
         curr_move = self.active_player.get_move(game_copy, legal_player_moves, time_left)
         move_end = time_left()
 
-        # print move_end
+        print(move_end)
 
         if curr_move is None:
                 curr_move = Board.NOT_MOVED
 
-        if self.active_player == self.__player_1__:
-            move_history.append([curr_move])
-        else:
-            if(move_history):
-                move_history[-1].append(curr_move)
-            else:
-                move_history.append([curr_move])
+
         if move_end < 0:
-            return self.__inactive_player__, move_history, "timeout"
+            raise TimeoutError
 
         if curr_move not in legal_player_moves:
-                return self.__inactive_player__, move_history, "illegal move"
+            return (-1,-1)
 
         return curr_move
