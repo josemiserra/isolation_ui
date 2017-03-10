@@ -372,6 +372,6 @@ class Board(object):
             raise TimeoutError
 
         if curr_move not in legal_player_moves:
-            return (-1,-1)
+            raise ValueError
 
         return curr_move

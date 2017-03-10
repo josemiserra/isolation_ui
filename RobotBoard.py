@@ -1,6 +1,6 @@
 import Game
 import random
-import Agent # replace by game_agent.py
+import game_agent # replace by game_agent.py
 
 
 class MyBot(object):
