@@ -1,6 +1,6 @@
 from HtmlBoard import HtmlGame
 from Sample_players import null_score, open_move_score, improved_score, HumanPlayer
-from Agent import CustomPlayer, custom_score
+from game_agent import CustomPlayer, custom_score
 
 
 
@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
 
     AB_ARGS = {"search_depth": 5, "method": 'alphabeta', "iterative": False}
-    player1 = CustomPlayer(score_fn=improved_score, **AB_ARGS)
+    player1 = CustomPlayer(score_fn=custom_score, **AB_ARGS)
     player2 = HumanPlayer()
     board_dimensions = (7, 7)
     game = HtmlGame(player1, player2, board_dimensions)
