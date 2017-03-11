@@ -9,8 +9,8 @@ if __name__ == '__main__':
     app = Flask(__name__)  # http://flask.pocoo.org/docs/0.10/quickstart/#quickstart
 
 
-    AB_ARGS = {"search_depth": 5, "method": 'alphabeta', "iterative": False}
-    player1 = CustomPlayer(score_fn=null_score, **AB_ARGS)
+    AB_ARGS = {"search_depth": 5, "method": 'alphabeta', "iterative": True}
+    player1 = CustomPlayer(score_fn=improved_score, **AB_ARGS)
     player2 = HumanPlayer()
     board_dimensions = (7, 7)
     game = HtmlGame(player1, player2, board_dimensions)
